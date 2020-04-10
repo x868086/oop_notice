@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="createNotice">createNotice</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
+  methods: {
+    createNotice (opts) {
+      const instance = this.$noticeConstructor({
+        content: Math.random().toString(16).toUpperCase().slice(-4),
+        closed: Math.random().toString(16).toUpperCase().slice(-4)
+      })
+      instance.createDom()
+    }
+  },
   components: {
-    HelloWorld
   }
 }
 </script>
